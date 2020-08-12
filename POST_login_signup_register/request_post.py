@@ -12,6 +12,7 @@ while(1):
 
 		data = {'id' : input_id, 'password' : input_pass}
 		res = requests.post(url, headers = headers, data=json.dumps(data))
+		print(res.text)
 
 	elif num==2: # 로그인
 		url='http://localhost:6000/login'
@@ -22,3 +23,4 @@ while(1):
 
 		data = {'id' : input_id, 'password' : input_pass}
 		res = requests.post(url, headers = headers, data=json.dumps(data))
+		print(res.text)
