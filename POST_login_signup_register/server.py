@@ -12,8 +12,8 @@ def nan():
 		set_id = request.json['id'] # id 설정하기
 		set_password = request.json['password'] # password 설정하기
 
-		if set_id in set_information: # 딕셔너리에 id가 존재할 때
-			return jsonify('{ state : defined_id }')
+		if set_id in set_information: # 딕셔너리에 id가 이미 존재하면
+			return jsonify('{ state : defined_id }') # 오류메세지 출력
 		set_information[set_id]=set_password # id, password 딕셔너리에 저장
 	return jsonify('{ state : success }')
 	
