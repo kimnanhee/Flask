@@ -33,7 +33,7 @@ def hee():
 			return jsonify('{ state : undefined_id }')
 	return jsonify('{ state : failed }')
 
-@app.route("/change", methods=['POST']) # 비밀번호 변경
+@app.route("/change",  methods = ['POST']) # 비밀번호 변경
 def kim():
 	global set_information
 	if request.method == 'POST':
