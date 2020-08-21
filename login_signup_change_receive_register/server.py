@@ -6,11 +6,11 @@ app = Flask(__name__)
 set_information={ } # 딕셔너리 선언
 set_code={ } # 코드 저장 리스트
 '''
-[
-	{id, password, [code]},
-	{id, password, [code]},
-	{id, password, [code]}
-]
+{
+	id:[code],
+	id:[code],
+	id:[code]
+}
 '''
 
 @app.route("/signup", methods = ['POST']) # 회원가입
@@ -81,7 +81,19 @@ def receive():
 				return 'wrong_password'
 		else: # 딕셔너리에 id가 존재하지 않을 때
 			return 'undefined_id'
-	return 'failed '
+	return 'failed'
+
+@app.route("/request", methods = ['POST']) # request 요청이 들어오면 code보내주기
+def code_request():
+	global set_code
+	if request.method == 'POST':
+		input_id = request.json['id'] # id에 해당하는 값 받아오기
+
+		if input_id in set_code: # 딕셔너리에 id가 존재할 때
+			return str(set_code[input_id]) # code 전송
+		else: # 딕셔너리에 id가 존재하지 않을 때
+			return 'undefined_id'
+	return 'failed'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
