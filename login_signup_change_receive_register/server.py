@@ -14,7 +14,7 @@ set_code={ } # 코드 저장 리스트
 '''
 
 @app.route("/signup", methods = ['POST']) # 회원가입
-def nan():
+def signup():
 	global set_information, set_code
 	if request.method == 'POST':
 		set_id = request.json['id'] # id 설정하기
@@ -27,11 +27,11 @@ def nan():
 			return 'defined_id' # 오류메세지 출력
 		set_information[set_id]=set_password # id, password 딕셔너리에 저장
 		set_code[set_id]=[]
-	print(set_information)
+	print(set_information) 
 	return 'success'
 
 @app.route("/login", methods = ['POST'])
-def hee():
+def login():
 	global set_information
 	if request.method == 'POST':
 		input_id = request.json['id'] # id에 해당하는 값 받아오기
@@ -47,7 +47,7 @@ def hee():
 	return 'failed'
 
 @app.route("/change",  methods = ['GET', 'POST']) # 비밀번호 변경
-def kim():
+def change():
 	global set_information
 	if request.method == 'POST':
 		input_id = request.json['id'] # id에 해당하는 값 받아오기
