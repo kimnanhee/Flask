@@ -16,7 +16,7 @@ def nan():
 			return jsonify('{ state : defined_id }') # 오류메세지 출력
 		set_information[set_id]=set_password # id, password 딕셔너리에 저장
 	return jsonify('{ state : success }')
-	
+
 @app.route("/login", methods = ['POST'])
 def hee():
 	global set_information
